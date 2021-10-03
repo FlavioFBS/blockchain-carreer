@@ -4,11 +4,36 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract Banco {
     
-    // CLASE: https://www.youtube.com/watch?v=G9SgweZ1U9I&list=PL-jD2YjEmwDpkSGIJ9tF4R1CM2TadvCRc&index=3
+    // CLASE-3: https://www.youtube.com/watch?v=G9SgweZ1U9I&list=PL-jD2YjEmwDpkSGIJ9tF4R1CM2TadvCRc&index=3
+    
+    address owner; // variable de estado, es global
+    
+    // creando un modificador:
+    modifier onlyOwner {
+        // restringir para que solo el propietario pueda usarlo
+        require(msg.sender == owner);
+        _; // indica que si se cumple el require ya se puede ejecutar el siguiente código
+    
+        /* NOTA: viendo a los modificadores como middlewares de NodeJS, el "_;" sería como la funcion next()
+        */
+    }
+    
+    function newOwner(address _newOwner) public onlyOwner {
+        owner = _newOwner;
+    }
+    
+    function getOwner() view public returns(address){
+        return owner;
+    }
+    
+    function getBalance() view public returns(uint256) {
+        return address(this).balance;
+    }
+    
     
     // payable: para que la funcion reciba dinero
     constructor() payable {
-        
+        owner = msg.sender;
     }
     
     function incrementBalance (uint256 amount) payable public {
@@ -22,7 +47,8 @@ contract Banco {
         -Tiene un identidad autónoma en la blockchain
     */
     
-    function getBalance() public {
+    // agregando modificador a la funcion
+    function withdrowBalance() public onlyOwner {
         // msg.sender: direccion de origen de quien llama a la funcion dentro del contrato
 
         // NOTA: mejor usar transfer que send, porque tiene unos problemas .-.
@@ -31,9 +57,10 @@ contract Banco {
         payable(msg.sender).transfer(address(this).balance);
     }
     
-    // funcion anonima: evitar usarla (°-°)  para evitar perdidas de dinero a los usuarios
+    /* funcion anonima: evitar usarla (°-°)  para evitar perdidas de dinero a los usuarios
     function() payable public {
         
     }
+    */
     
 }
