@@ -27,7 +27,7 @@ contract variable_modifiers {
     // address
     address myAddress;
     address public address_1 = 0x1aE0EA34a72D944a8C7603FfB3eC30a6669E454C;
-    address public address_2 = msg.sender; // direccion de quien crea el contrato (el que despliega)
+    address public address_2 = msg.sender; // direccion de quien consulta al contrato
 
     // variable de enumeracion enums
     enum options {ON, OFF}  // no se le pone ";"
@@ -52,7 +52,11 @@ contract variable_modifiers {
     bytes20 public rimped160 = ripemd160(abi.encode("hola -.-"));
     // si se pone más de 20, aparecen 2 ceros por cada incremento, por ejm en byte23 al final habrán 6 ceros
     bytes23 public rimped160_demas = ripemd160(abi.encode("hola -.-"));
+/* 
+0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
 
+
+ */
 
 }
 
