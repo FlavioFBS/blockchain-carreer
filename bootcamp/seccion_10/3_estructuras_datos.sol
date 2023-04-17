@@ -3,7 +3,6 @@ pragma solidity ^0.8.4;
 
 
 contract data_structures {
-
     struct Customer {
         uint128 id;
         string name;
