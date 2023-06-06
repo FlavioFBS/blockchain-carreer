@@ -1,0 +1,21 @@
+## Cómo usar:
+Desplegar contracts NFT, luego MarketPlace
+
+- Usar usuario diferente al owner de los contracts,
+
+### 1. Mintiar un nft
+Usar el contract NFT, la funcion mint
+
+### 2. Asignar al contract Marketplace para que pueda gestionar mis tokens:
+Usando un usuario comun: usar la funcion setApprovalForAll del contract NFT, 
+indicando como operador al address del contract Marketplace
+
+### 3. Luego de mintiar el NFT, debe crear el item en el marketplace:
+Usar la funcion makeItem del contract Marketplace.
+- <b>_nft:</b> direccion de contract NFT
+- <b>_tokenId:</b> el id del token generado
+- <b>_price: </b>se pone en unidad wei
+
+### 4. Actuando como comprador, usar address diferente a vendedor y owner:
+Usar la función purchaseItem del contract Marketplace
+
