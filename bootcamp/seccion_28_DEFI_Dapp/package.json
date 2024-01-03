@@ -21,7 +21,11 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "recompensa:bsc": "truffle exec scripts/issue-token.js --network binanceSC",
+    "recompensa:polygon": "truffle exec scripts/issue-token.js --network polygon",
+    "deploy:bsc": "truffle migrate --reset --network binanceSC",
+    "deploy:polygon": "truffle migrate --reset --compile-all --network polygon"
   },
   "eslintConfig": {
     "extends": [

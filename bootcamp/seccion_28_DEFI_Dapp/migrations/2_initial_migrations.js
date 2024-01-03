@@ -3,6 +3,7 @@ const ChisiDefiToken = artifacts.require("ChisiDefiToken");
 const TokenFarm = artifacts.require("TokenFarm");
 
 module.exports = async function (deployer, network, accounts) {
+  console.log({ accounts })
   await deployer.deploy(JamToken);
   const jamtoken = await JamToken.deployed();
 
@@ -16,5 +17,5 @@ module.exports = async function (deployer, network, accounts) {
   await chisiDefiToken.transfer(tokenFarm.address, '1000000000000000000000000');
 
   // transferencia de tokens para staking
-  await jamtoken.transfer(accounts[1], '100000000000000000000');
+  await jamtoken.transfer(accounts[0], '100000000000000000000');
 }

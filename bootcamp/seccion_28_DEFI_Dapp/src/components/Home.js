@@ -63,8 +63,11 @@ const App = () => {
     if (jamTokenData) {
       console.log('get jamtoken');
       const jamtokenValue = new web3.eth.Contract(JamToken.abi, jamTokenData.address);
-      console.log('check jamtoken balance: ', accounts[0]);
       let jamTokenBalance = await jamtokenValue.methods.balanceOf(accounts[0]).call();
+      console.log({
+        jamtokenAddress: jamTokenData.address,
+        jamTokenBalance
+      });
       setJamTokenBalance(jamTokenBalance)
       setJamToken(jamtokenValue);
     } else {

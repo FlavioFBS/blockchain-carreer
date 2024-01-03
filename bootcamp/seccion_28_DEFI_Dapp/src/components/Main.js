@@ -61,7 +61,7 @@ const Main = (
               <div className="input-group-append">
                 <div className="input-group-text">
                   <img src={logoJam} height={32} alt="" />
-                  &nbsp;&nbsp; ChisiDefi
+                  &nbsp;&nbsp; JAM
                 </div>
               </div>
             </div>
